@@ -1,5 +1,15 @@
 {% extends 'base.html.twig' %}
 
  {% block body %}
- <h1>Hello {{ firstname }}</h1>
+ <h1>Welcome to the Sebo's Blog</h1>
+ {% for post in posts%}
+    <h2>{{ post.title}}</h2>
+    <small>{{ post.publishedAt|date("d/m/Y")}}</small>
+    <p>{{ post.content }}</p>
+    <small>{{ post.comments |length }} commentaire(s)</small>
+    <a href="{{ path("blog_article", {id: post.id} ) }}">lire la suite</a>
+    <br>
+ {% endfor %}
+ 
+
  {% endblock %}
